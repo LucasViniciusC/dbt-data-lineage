@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: filmes
+    description: "Dados de filmes da Netflix limpos e transformados"
+    columns:
+      - name: SHOW_ID
+        description: "Identificador único para cada filme ou série"
+        tests:
+          - unique  # Verifica se o valor é único
+          - not_null  # Verifica se o valor não é nulo
+      - name: TITLE
+        description: "Título do filme ou série"
+        tests:
+          - not_null  # Verifica se o título não é nulo
+      - name: RELEASE_YEAR
+        description: "Ano de lançamento"
+        tests:
+          - not_null  # Verifica se o ano de lançamento não é nulo
+          - accepted_values:
+              values: ['2019', '2020', '2021', '2022', '2023' ]  # Verifica se o valor é um dos aceitos
+      - name: RATING
+        description: "Classificação indicativa"
